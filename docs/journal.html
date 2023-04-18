@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Khaled Al-Zaben" />
+
+<meta name="date" content="2020-11-23" />
+
+<title>Journal (reproducible report)</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MyLabJournal</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="journal.html">Journal</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Class notes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dictionary.html">Dictionary</a>
+    </li>
+    <li>
+      <a href="data_wrangling.html">Data Wrangling</a>
+    </li>
+    <li>
+      <a href="ggplot_graphs.html">ggplot graphs</a>
+    </li>
+    <li>
+      <a href="machine_learning.html">machine learning</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="links.html">Links</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Journal (reproducible report)</h1>
+<h4 class="author">Khaled Al-Zaben</h4>
+<h4 class="date">2020-11-23</h4>
+
+</div>
+
+
+<div id="into-the-tidyverse" class="section level1">
+<h1><span class="header-section-number">1</span> Into the tidyverse</h1>
+<p>Into the tidyverse</p>
+<div id="challenge-1" class="section level2">
+<h2><span class="header-section-number">1.1</span> Challenge 1</h2>
+<p>Analyze the sales by location (state) with a bar plot. Since state and city are multiple features (variables), they should be split. Which state has the highes revenue? Replace your bike_orderlines_wrangled_tbl object with the newly wrangled object (with the columns state and city).</p>
+</div>
+<div id="challenge-2" class="section level2">
+<h2><span class="header-section-number">1.2</span> Challenge 2</h2>
+<p>Analyze the sales by location and year (facet_wrap). Because there are 12 states with bike stores, you should get 12 plots.</p>
+</div>
+<div id="challenge-code" class="section level2">
+<h2><span class="header-section-number">1.3</span> Challenge Code</h2>
+<pre class="r"><code># Data Science at TUHH ------------------------------------------------------
+# SALES ANALYSIS ----
+
+# 1.0 Load libraries ----
+library(tidyverse)
+library(readxl)
+
+# 2.0 Importing Files ----
+bikes_tbl      &lt;- read_excel(&quot;C:/Users/Khale/Desktop/Business Module/DS_101/00_data/01_bike_sales/01_raw_data/bikes.xlsx&quot;)
+orderlines_tbl &lt;- read_excel(&quot;C:/Users/Khale/Desktop/Business Module/DS_101/00_data/01_bike_sales/01_raw_data/orderlines.xlsx&quot;)
+bikeshops_tbl  &lt;- read_excel(&quot;C:/Users/Khale/Desktop/Business Module/DS_101/00_data/01_bike_sales/01_raw_data/bikeshops.xlsx&quot;)
+
+
+
+
+bikes_tbl &lt;- read_excel(&quot;C:/Users/Khale/Desktop/Business Module/DS_101/00_data/01_bike_sales/01_raw_data/bikes.xlsx&quot;) %&gt;%
+  
+  # Separate product category name in main and sub
+  separate(col    = category,
+           into   = c(&quot;category.1&quot;, &quot;category.2&quot;, &quot;category.3&quot;),
+           sep    = &quot; - &quot;) %&gt;%
+  
+  # Renaming columns
+  set_names(names(.) %&gt;% str_replace_all(&quot;\\.&quot;, &quot;_&quot;))
+
+# 3.0 Examining Data ----
+orderlines_tbl</code></pre>
+<pre><code>## # A tibble: 15,644 x 7
+##    ...1  order.id order.line order.date          customer.id product.id quantity
+##    &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;                    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+##  1 1            1          1 2015-01-07 00:00:00           2       2681        1
+##  2 2            1          2 2015-01-07 00:00:00           2       2411        1
+##  3 3            2          1 2015-01-10 00:00:00          10       2629        1
+##  4 4            2          2 2015-01-10 00:00:00          10       2137        1
+##  5 5            3          1 2015-01-10 00:00:00           6       2367        1
+##  6 6            3          2 2015-01-10 00:00:00           6       1973        1
+##  7 7            3          3 2015-01-10 00:00:00           6       2422        1
+##  8 8            3          4 2015-01-10 00:00:00           6       2655        1
+##  9 9            3          5 2015-01-10 00:00:00           6       2247        1
+## 10 10           4          1 2015-01-11 00:00:00          22       2408        1
+## # ... with 15,634 more rows</code></pre>
+<pre class="r"><code>glimpse(orderlines_tbl)</code></pre>
+<pre><code>## Rows: 15,644
+## Columns: 7
+## $ ...1        &lt;chr&gt; &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;...
+## $ order.id    &lt;dbl&gt; 1, 1, 2, 2, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7...
+## $ order.line  &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 3, 4, 5, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6, 7...
+## $ order.date  &lt;dttm&gt; 2015-01-07, 2015-01-07, 2015-01-10, 2015-01-10, 2015-01-10, 2015-01-10, ...
+## $ customer.id &lt;dbl&gt; 2, 2, 10, 10, 6, 6, 6, 6, 6, 22, 8, 8, 8, 8, 16, 16, 16, 16, 9, 9, 9, 9, ...
+## $ product.id  &lt;dbl&gt; 2681, 2411, 2629, 2137, 2367, 1973, 2422, 2655, 2247, 2408, 2252, 2410, 2...
+## $ quantity    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...</code></pre>
+<pre class="r"><code># 4.0 Joining Data ----
+bike_orderlines_joined_tbl &lt;- orderlines_tbl %&gt;%
+  left_join(bikes_tbl, by = c(&quot;product.id&quot; = &quot;bike_id&quot;)) %&gt;%
+  left_join(bikeshops_tbl, by = c(&quot;customer.id&quot; = &quot;bikeshop.id&quot;))
+bike_orderlines_joined_tbl %&gt;% glimpse()</code></pre>
+<pre><code>## Rows: 15,644
+## Columns: 21
+## $ ...1           &lt;chr&gt; &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;...
+## $ order.id       &lt;dbl&gt; 1, 1, 2, 2, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7...
+## $ order.line     &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 3, 4, 5, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6...
+## $ order.date     &lt;dttm&gt; 2015-01-07, 2015-01-07, 2015-01-10, 2015-01-10, 2015-01-10, 2015-01-1...
+## $ customer.id    &lt;dbl&gt; 2, 2, 10, 10, 6, 6, 6, 6, 6, 22, 8, 8, 8, 8, 16, 16, 16, 16, 9, 9, 9, ...
+## $ product.id     &lt;dbl&gt; 2681, 2411, 2629, 2137, 2367, 1973, 2422, 2655, 2247, 2408, 2252, 2410...
+## $ quantity       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
+## $ model          &lt;chr&gt; &quot;Spectral CF 7 WMN&quot;, &quot;Ultimate CF SLX Disc 8.0 ETAP&quot;, &quot;Neuron CF 8&quot;, &quot;...
+## $ model_year     &lt;dbl&gt; 2021, 2020, 2021, 2019, 2020, 2020, 2020, 2021, 2020, 2020, 2020, 2020...
+## $ frame_material &lt;chr&gt; &quot;carbon&quot;, &quot;carbon&quot;, &quot;carbon&quot;, &quot;carbon&quot;, &quot;aluminium&quot;, &quot;carbon&quot;, &quot;carbon...
+## $ weight         &lt;dbl&gt; 13.80, 7.44, 14.06, 8.80, 11.50, 8.80, 8.20, 8.85, 14.40, 6.50, 21.25,...
+## $ price          &lt;dbl&gt; 3119, 5359, 2729, 1749, 1219, 1359, 2529, 1559, 3899, 6629, 2919, 4089...
+## $ category_1     &lt;chr&gt; &quot;Mountain&quot;, &quot;Road&quot;, &quot;Mountain&quot;, &quot;Road&quot;, &quot;Mountain&quot;, &quot;Hybrid / City&quot;, &quot;...
+## $ category_2     &lt;chr&gt; &quot;Trail&quot;, &quot;Race&quot;, &quot;Trail&quot;, &quot;Triathlon Bike&quot;, &quot;Dirt Jump&quot;, &quot;City&quot;, &quot;Tria...
+## $ category_3     &lt;chr&gt; &quot;Spectral&quot;, &quot;Ultimate&quot;, &quot;Neuron&quot;, &quot;Speedmax&quot;, &quot;Stitched&quot;, &quot;Roadlite&quot;, ...
+## $ gender         &lt;chr&gt; &quot;female&quot;, &quot;unisex&quot;, &quot;unisex&quot;, &quot;unisex&quot;, &quot;unisex&quot;, &quot;unisex&quot;, &quot;female&quot;, ...
+## $ url            &lt;chr&gt; &quot;https://www.canyon.com/en-de/mountain-bikes/trail-bikes/spectral/spec...
+## $ name           &lt;chr&gt; &quot;AlexandeRad&quot;, &quot;AlexandeRad&quot;, &quot;WITT-RAD&quot;, &quot;WITT-RAD&quot;, &quot;fahrschneller&quot;,...
+## $ location       &lt;chr&gt; &quot;Hamburg, Hamburg&quot;, &quot;Hamburg, Hamburg&quot;, &quot;Bremen, Bremen&quot;, &quot;Bremen, Bre...
+## $ lat            &lt;dbl&gt; 53.57532, 53.57532, 53.07379, 53.07379, 48.78234, 48.78234, 48.78234, ...
+## $ lng            &lt;dbl&gt; 10.015340, 10.015340, 8.826754, 8.826754, 9.180819, 9.180819, 9.180819...</code></pre>
+<pre class="r"><code>bike_orderlines_joined_tbl</code></pre>
+<pre><code>## # A tibble: 15,644 x 21
+##    ...1  order.id order.line order.date          customer.id product.id quantity model model_year
+##    &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;dttm&gt;                    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1 1            1          1 2015-01-07 00:00:00           2       2681        1 Spec~       2021
+##  2 2            1          2 2015-01-07 00:00:00           2       2411        1 Ulti~       2020
+##  3 3            2          1 2015-01-10 00:00:00          10       2629        1 Neur~       2021
+##  4 4            2          2 2015-01-10 00:00:00          10       2137        1 Spee~       2019
+##  5 5            3          1 2015-01-10 00:00:00           6       2367        1 Stit~       2020
+##  6 6            3          2 2015-01-10 00:00:00           6       1973        1 Road~       2020
+##  7 7            3          3 2015-01-10 00:00:00           6       2422        1 Spee~       2020
+##  8 8            3          4 2015-01-10 00:00:00           6       2655        1 Infl~       2021
+##  9 9            3          5 2015-01-10 00:00:00           6       2247        1 Torq~       2020
+## 10 10           4          1 2015-01-11 00:00:00          22       2408        1 Ulti~       2020
+## # ... with 15,634 more rows, and 12 more variables: frame_material &lt;chr&gt;, weight &lt;dbl&gt;,
+## #   price &lt;dbl&gt;, category_1 &lt;chr&gt;, category_2 &lt;chr&gt;, category_3 &lt;chr&gt;, gender &lt;chr&gt;, url &lt;chr&gt;,
+## #   name &lt;chr&gt;, location &lt;chr&gt;, lat &lt;dbl&gt;, lng &lt;dbl&gt;</code></pre>
+<pre class="r"><code># 5.0 Wrangling Data ----
+
+bike_orderlines_wrangled_tbl &lt;- bike_orderlines_joined_tbl %&gt;%
+  separate(col    = location,
+           into   = c(&quot;city&quot;, &quot;state&quot;),
+           sep    = &quot;, &quot;) %&gt;%
+  mutate(total.price = price * quantity) %&gt;%
+  bind_cols(bike_orderlines_joined_tbl %&gt;% select(order.id)) %&gt;% 
+  
+  rename(bikeshop = name) %&gt;%
+  set_names(names(.) %&gt;% str_replace_all(&quot;\\.&quot;, &quot;_&quot;))
+
+# 6.0 Business Insights ----
+library(lubridate)
+
+# 6.1 Sales by State ----
+sales_by_state_tbl &lt;- bike_orderlines_wrangled_tbl %&gt;%
+  select(state, total_price) %&gt;%
+  
+  group_by(state) %&gt;% 
+  summarize(sales = sum(total_price)) %&gt;%
+  mutate(sales_text = scales::dollar(sales, big.mark = &quot;.&quot;, 
+                                     decimal.mark = &quot;,&quot;, 
+                                     prefix = &quot;&quot;, 
+                                     suffix = &quot; â‚¬&quot;))
+sales_by_state_tbl</code></pre>
+<pre><code>## # A tibble: 12 x 3
+##    state                            sales sales_text    
+##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;         
+##  1 Baden-Württemberg              6521090 6.521.090 â‚¬ 
+##  2 Bavaria                        6742819 6.742.819 â‚¬ 
+##  3 Berlin                         1128433 1.128.433 â‚¬ 
+##  4 Bremen                        10653499 10.653.499 â‚¬
+##  5 Hamburg                        3874756 3.874.756 â‚¬ 
+##  6 Hesse                          1558901 1.558.901 â‚¬ 
+##  7 Lower Saxony                   4107115 4.107.115 â‚¬ 
+##  8 Mecklenburg-Western Pomerania   618974 618.974 â‚¬   
+##  9 North Rhine-Westphalia        21200613 21.200.613 â‚¬
+## 10 Saxony                         2230245 2.230.245 â‚¬ 
+## 11 Saxony-Anhalt                   569614 569.614 â‚¬   
+## 12 Schleswig-Holstein             3224749 3.224.749 â‚¬</code></pre>
+<pre class="r"><code>sales_by_state_tbl %&gt;%
+  
+# Step 2 - Visualize
+
+  ggplot(aes(x = state, y = sales)) +
+  geom_col(fill = &quot;#2DC6D6&quot;) + 
+  geom_label(aes(label = sales_text)) + 
+  geom_smooth(method = &quot;lm&quot;, se = FALSE) + 
+  scale_y_continuous(labels = scales::dollar_format(big.mark = &quot;.&quot;, 
+                                                    decimal.mark = &quot;,&quot;, 
+                                                    prefix = &quot;&quot;, 
+                                                    suffix = &quot; â‚¬&quot;)) +
+  labs(
+    title    = &quot;Revenue by state&quot;,
+    subtitle = &quot;Upward Trend&quot;,
+    x = &quot;&quot;,
+    y = &quot;Revenue&quot;
+  )+ theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="journal_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># 6.2 Sales by Year and State ----
+
+# Step 1 - Manipulate
+sales_by_year_loc_1_tbl &lt;- bike_orderlines_wrangled_tbl %&gt;%
+  select(state,order_date,total_price) %&gt;%
+  mutate(year = year(order_date)) %&gt;%
+  group_by(year, state) %&gt;%
+  summarise(sales = sum(total_price)) %&gt;%
+  ungroup() %&gt;%
+  mutate(sales_text = scales::dollar(sales, big.mark = &quot;.&quot;, 
+                                     decimal.mark = &quot;,&quot;, 
+                                     prefix = &quot;&quot;, 
+                                     suffix = &quot; â‚¬&quot;))
+
+sales_by_year_loc_1_tbl </code></pre>
+<pre><code>## # A tibble: 60 x 4
+##     year state                           sales sales_text   
+##    &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt; &lt;chr&gt;        
+##  1  2015 Baden-Württemberg             1031924 1.031.924 â‚¬
+##  2  2015 Bavaria                       1301461 1.301.461 â‚¬
+##  3  2015 Berlin                          95853 95.853 â‚¬   
+##  4  2015 Bremen                        1395912 1.395.912 â‚¬
+##  5  2015 Hamburg                        423090 423.090 â‚¬  
+##  6  2015 Hesse                          308609 308.609 â‚¬  
+##  7  2015 Lower Saxony                   584386 584.386 â‚¬  
+##  8  2015 Mecklenburg-Western Pomerania  222003 222.003 â‚¬  
+##  9  2015 North Rhine-Westphalia        3735092 3.735.092 â‚¬
+## 10  2015 Saxony                         238371 238.371 â‚¬  
+## # ... with 50 more rows</code></pre>
+<pre class="r"><code># Step 2 - Visualize
+sales_by_year_loc_1_tbl %&gt;%
+  ggplot(aes(x = year, y = sales, fill = state)) +
+  geom_col() +
+  facet_wrap(~ state) +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = &quot;.&quot;, 
+                                                    decimal.mark = &quot;,&quot;, 
+                                                    prefix = &quot;&quot;, 
+                                                    suffix = &quot; â‚¬&quot;)) +
+  labs(
+    title = &quot;Revenue by year and state&quot;,
+    subtitle = &quot;Each state has an upward trend&quot;,
+    fill = &quot;state&quot; 
+  ) +
+   theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="journal_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+</div>
+</div>
+<div id="data-acquisition" class="section level1">
+<h1><span class="header-section-number">2</span> Data Acquisition</h1>
+<p>Data Acquisition</p>
+<div id="challenge-1-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Challenge 1</h2>
+<p>Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service. You just have to google them. You can use whatever service you want. For example, you can get data about your listening history (spotify), get data about flights (skyscanner) or just check the weather forecast.</p>
+</div>
+<div id="challenge-code-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Challenge Code</h2>
+<pre class="r"><code>library(httr)
+library(tidyverse)
+library(jsonlite)
+
+resp &lt;- GET(&quot;https://www.breakingbadapi.com/api/episodes&quot;)
+# Wrapped into a function
+sw_api &lt;- function(episodeUrl) {
+  resp &lt;- httr::GET(episodeUrl)
+  httr::stop_for_status(resp) # automatically throws an error if a request did not succeed
+}
+
+resp &lt;- sw_api(&quot;https://www.breakingbadapi.com/api/episodes&quot;)
+resp</code></pre>
+<pre><code>## Response [https://www.breakingbadapi.com/api/episodes]
+##   Date: 2020-12-04 20:20
+##   Status: 200
+##   Content-Type: application/json; charset=utf-8
+##   Size: 25.6 kB</code></pre>
+<pre class="r"><code>rawToChar(resp$content)</code></pre>
+<pre><code>## [1] &quot;[{\&quot;episode_id\&quot;:1,\&quot;title\&quot;:\&quot;Pilot\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;01-20-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Krazy-8\&quot;,\&quot;Bogdan Wolynetz\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:2,\&quot;title\&quot;:\&quot;Cat&#39;s in the Bag...\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;01-27-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Krazy-8\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:3,\&quot;title\&quot;:\&quot;...And the Bag&#39;s in the River\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-10-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Krazy-8\&quot;,\&quot;Gretchen Schwartz\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:4,\&quot;title\&quot;:\&quot;Cancer Man\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-17-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Ken Wins\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:5,\&quot;title\&quot;:\&quot;Gray Matter\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-24-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Elliott Schwarts\&quot;,\&quot;Gretchen Swartz\&quot;,\&quot;Badger\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:6,\&quot;title\&quot;:\&quot;Crazy Handful of Nothin\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-02-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Tuco Salamanca\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:7,\&quot;title\&quot;:\&quot;A No-Rough-Stuff-Type Deal\&quot;,\&quot;season\&quot;:\&quot; 1\&quot;,\&quot;air_date\&quot;:\&quot;03-09-2008\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Tuco Salamanca\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:8,\&quot;title\&quot;:\&quot;Seven-Thirty-Seven\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-08-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Tuco Salamanca\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:9,\&quot;title\&quot;:\&quot;Grilled\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-15-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Tuco Salamanca\&quot;,\&quot;Hector Salamanca\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:10,\&quot;title\&quot;:\&quot;Bit by a Dead Bee\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-22-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Hector Salamanca\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:11,\&quot;title\&quot;:\&quot;Down\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-29-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Walter White Jr.\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:12,\&quot;title\&quot;:\&quot;Breakage\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-05-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Badger\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:13,\&quot;title\&quot;:\&quot;Peekaboo\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-12-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gretchen Schwartz\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:14,\&quot;title\&quot;:\&quot;Negro y Azul\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-19-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Tortuga\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:15,\&quot;title\&quot;:\&quot;Better Call Saul\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-26-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Badger\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:16,\&quot;title\&quot;:\&quot;4 Days Out\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;05-03-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Jane Margolis\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:17,\&quot;title\&quot;:\&quot;Over\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;05-10-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:18,\&quot;title\&quot;:\&quot;Mandala\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;05-17-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Ted Beneke\&quot;,\&quot;Donald Margolis\&quot;,\&quot;Combo\&quot;],\&quot;episode\&quot;:\&quot;11\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:19,\&quot;title\&quot;:\&quot;Phoenix\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;05-24-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Ted Beneke\&quot;,\&quot;Donald Margolis\&quot;],\&quot;episode\&quot;:\&quot;12\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:20,\&quot;title\&quot;:\&quot;ABQ\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;05-31-2009\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Jane Margolis\&quot;,\&quot;Donald Margolis\&quot;],\&quot;episode\&quot;:\&quot;13\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:21,\&quot;title\&quot;:\&quot;No MÃ¡s\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;03-21-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;The cousins\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:22,\&quot;title\&quot;:\&quot;Caballo sin Nombre\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;03-28-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Hector Salamanca\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:23,\&quot;title\&quot;:\&quot;IFT\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-04-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Hector Salamanca\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:24,\&quot;title\&quot;:\&quot;Green Light\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-11-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:25,\&quot;title\&quot;:\&quot;MÃ¡s\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-18-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:26,\&quot;title\&quot;:\&quot;Sunset\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-25-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Gale Boetticher\&quot;,\&quot;The cousins\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:27,\&quot;title\&quot;:\&quot;One Minute\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-02-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Hector Salamanca\&quot;,\&quot;The cousins\&quot;,\&quot;Gale Boetticher\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:28,\&quot;title\&quot;:\&quot;I See You\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-09-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Mike Ehrmantraut\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:29,\&quot;title\&quot;:\&quot;Kafkaesque\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-16-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:30,\&quot;title\&quot;:\&quot;Fly\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-23-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;a fly\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:31,\&quot;title\&quot;:\&quot;Abiquiu\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-30-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Jane Margolis\&quot;],\&quot;episode\&quot;:\&quot;11\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:32,\&quot;title\&quot;:\&quot;Half measures\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;06-06-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Andrea Cantillo\&quot;,\&quot;Victor\&quot;],\&quot;episode\&quot;:\&quot;12\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:33,\&quot;title\&quot;:\&quot;Full Measure\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;06-13-2010\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Gale Boetticher\&quot;,\&quot;Victor\&quot;],\&quot;episode\&quot;:\&quot;13\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:34,\&quot;title\&quot;:\&quot;Box Cutter\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;07-17-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Gale Boetticher\&quot;,\&quot;Victor\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:35,\&quot;title\&quot;:\&quot;Thirty-Eight Snub\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;07-24-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Andrea Cantillo\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:36,\&quot;title\&quot;:\&quot;Open House\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;07-31-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Bogdan Wolynetz\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:37,\&quot;title\&quot;:\&quot;Bullet Points\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-07-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;White White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Gale Boetticher\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:38,\&quot;title\&quot;:\&quot;Shotgun\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-14-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Mike Ehrmantraut\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:39,\&quot;title\&quot;:\&quot;Cornered\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-21-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Bogdan Wolynetz\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:40,\&quot;title\&quot;:\&quot;Problem Dog\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-28-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Gale Boetticher\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:41,\&quot;title\&quot;:\&quot;Hermanos\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-04-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Hector Salamanca\&quot;,\&quot;Andrea Cantillo\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:42,\&quot;title\&quot;:\&quot;Bug\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-11-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:43,\&quot;title\&quot;:\&quot;Salud\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-18-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Ted Beneke\&quot;,\&quot;Don Eladio\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:44,\&quot;title\&quot;:\&quot;Crawl Space\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-25-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Hector Salamanca\&quot;,\&quot;Ted Beneke\&quot;,\&quot;Andrea Cantillo\&quot;],\&quot;episode\&quot;:\&quot;11\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:45,\&quot;title\&quot;:\&quot;End Times\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;10-02-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Andrea Cantillo\&quot;],\&quot;episode\&quot;:\&quot;12\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:46,\&quot;title\&quot;:\&quot;Face Off\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;10-09-2011\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Gustavo Fring\&quot;,\&quot;Saul Goodman\&quot;],\&quot;episode\&quot;:\&quot;13\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:47,\&quot;title\&quot;:\&quot;Live Free of Die\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;07-15-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Ted Beneke\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:48,\&quot;title\&quot;:\&quot;Madrigal\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;07-22-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:49,\&quot;title\&quot;:\&quot;Hazard Pay\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;07-29-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Badger\&quot;,\&quot;Andrea Cantillo\&quot;,\&quot;Todd Alquist\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:50,\&quot;title\&quot;:\&quot;Fifty-One\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-05-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:51,\&quot;title\&quot;:\&quot;Dead Freight\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-12-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:52,\&quot;title\&quot;:\&quot;Buyout\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-19-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Todd Alquist\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:53,\&quot;title\&quot;:\&quot;Say My Name\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-26-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Todd Alquist\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:54,\&quot;title\&quot;:\&quot;Gliding Over All\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-02-2012\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Mike Ehrmantraut\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:55,\&quot;title\&quot;:\&quot;Blood Money\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-11-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Badger\&quot;,\&quot;Skinny Pete\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:56,\&quot;title\&quot;:\&quot;Buried\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-18-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Jack Welker\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:57,\&quot;title\&quot;:\&quot;Confessions\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;08-25-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Jack Welker\&quot;],\&quot;episode\&quot;:\&quot;11\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:58,\&quot;title\&quot;:\&quot;Rabid Dog\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-01-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;],\&quot;episode\&quot;:\&quot;12\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:59,\&quot;title\&quot;:\&quot;To&#39;hajilee\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-08-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Andrea Cantillo\&quot;,\&quot;Jack Welker\&quot;],\&quot;episode\&quot;:\&quot;13\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:60,\&quot;title\&quot;:\&quot;Ozymandias\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-15-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Hank Schrader\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Jack Welker\&quot;,\&quot;Steve Gomez\&quot;],\&quot;episode\&quot;:\&quot;14\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:61,\&quot;title\&quot;:\&quot;Granite State\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-22-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Saul Goodman\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Jack Welker\&quot;,\&quot;Andrea Cantillo\&quot;,\&quot;Eliott Schwartz\&quot;,\&quot;Gretchen Schwartz\&quot;],\&quot;episode\&quot;:\&quot;15\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:62,\&quot;title\&quot;:\&quot;Felina\&quot;,\&quot;season\&quot;:\&quot;5\&quot;,\&quot;air_date\&quot;:\&quot;09-29-2013\&quot;,\&quot;characters\&quot;:[\&quot;Walter White\&quot;,\&quot;Jesse Pinkman\&quot;,\&quot;Skyler White\&quot;,\&quot;Marie Schrader\&quot;,\&quot;Walter White Jr.\&quot;,\&quot;Lydia Rodarte-Quayle\&quot;,\&quot;Todd Alquist\&quot;,\&quot;Jack Welker\&quot;,\&quot;Badger\&quot;,\&quot;Skinny Pete\&quot;,\&quot;Eliott Schwartz\&quot;,\&quot;Gretchen Schwartz\&quot;],\&quot;episode\&quot;:\&quot;16\&quot;,\&quot;series\&quot;:\&quot;Breaking Bad\&quot;},{\&quot;episode_id\&quot;:63,\&quot;title\&quot;:\&quot;Uno\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-08-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:64,\&quot;title\&quot;:\&quot;Mijo\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-09-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;,\&quot;Tuco Salamanca\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:65,\&quot;title\&quot;:\&quot;Nacho\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-16-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:66,\&quot;title\&quot;:\&quot;Hero\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;02-23-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:67,\&quot;title\&quot;:\&quot;Alpine Shepherd Boy\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-02-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:68,\&quot;title\&quot;:\&quot;Five-O\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-09-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:69,\&quot;title\&quot;:\&quot;Bingo\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-16-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:70,\&quot;title\&quot;:\&quot;RICO\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-23-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:71,\&quot;title\&quot;:\&quot;Pimento\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;03-30-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:72,\&quot;title\&quot;:\&quot;Marco\&quot;,\&quot;season\&quot;:\&quot;1\&quot;,\&quot;air_date\&quot;:\&quot;04-06-2015\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:73,\&quot;title\&quot;:\&quot;Switch\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;02-15-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:74,\&quot;title\&quot;:\&quot;Cobbler\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;02-22-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:75,\&quot;title\&quot;:\&quot;Amarillo\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;02-29-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:76,\&quot;title\&quot;:\&quot;Gloves Off\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-07-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:77,\&quot;title\&quot;:\&quot;Rebecca\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-14-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:78,\&quot;title\&quot;:\&quot;Bali Ha&#39;i\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-21-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:79,\&quot;title\&quot;:\&quot;Inflatable\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;03-28-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:80,\&quot;title\&quot;:\&quot;Fifi\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-04-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:81,\&quot;title\&quot;:\&quot;Nailed\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-11-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:82,\&quot;title\&quot;:\&quot;Klick\&quot;,\&quot;season\&quot;:\&quot;2\&quot;,\&quot;air_date\&quot;:\&quot;04-18-2016\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:83,\&quot;title\&quot;:\&quot;Mabel\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-10-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:84,\&quot;title\&quot;:\&quot;Witness\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-17-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:85,\&quot;title\&quot;:\&quot;Sunk Costs\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;04-24-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:86,\&quot;title\&quot;:\&quot;Sabrosito\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-01-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:87,\&quot;title\&quot;:\&quot;Chicanery\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-08-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:88,\&quot;title\&quot;:\&quot;Off Brand\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-15-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:89,\&quot;title\&quot;:\&quot;Expenses\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;05-22-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:90,\&quot;title\&quot;:\&quot;Slip\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;06-05-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:91,\&quot;title\&quot;:\&quot;Fall\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;06-12-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:92,\&quot;title\&quot;:\&quot;Lantern\&quot;,\&quot;season\&quot;:\&quot;3\&quot;,\&quot;air_date\&quot;:\&quot;06-19-2017\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:93,\&quot;title\&quot;:\&quot;Smoke\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-06-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;1\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:94,\&quot;title\&quot;:\&quot;Breathe\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-13-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;2\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:95,\&quot;title\&quot;:\&quot;Something Beautiful\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-20-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;3\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:96,\&quot;title\&quot;:\&quot;Talk\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;08-27-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;4\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:97,\&quot;title\&quot;:\&quot;Quite a Ride\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-03-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;5\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:98,\&quot;title\&quot;:\&quot;Pinata\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-10-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;6\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:99,\&quot;title\&quot;:\&quot;Something Stupid\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-17-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;7\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:100,\&quot;title\&quot;:\&quot;Coushatta\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;09-24-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;8\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:101,\&quot;title\&quot;:\&quot;Wiedersehen\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;10-01-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;9\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;},{\&quot;episode_id\&quot;:102,\&quot;title\&quot;:\&quot;Winner\&quot;,\&quot;season\&quot;:\&quot;4\&quot;,\&quot;air_date\&quot;:\&quot;10-08-2018\&quot;,\&quot;characters\&quot;:[\&quot;Jimmy McGill\&quot;,\&quot;Mike Erhmantraut\&quot;,\&quot;Kim Wexler\&quot;,\&quot;Howard Hamlin\&quot;,\&quot;Chuck McGill\&quot;,\&quot;Nacho Varga\&quot;],\&quot;episode\&quot;:\&quot;10\&quot;,\&quot;series\&quot;:\&quot;Better Call Saul\&quot;}]&quot;</code></pre>
+<pre class="r"><code>resp %&gt;% 
+  .$content %&gt;% 
+  rawToChar() %&gt;% 
+  jsonlite::fromJSON()</code></pre>
+<pre><code>##     episode_id                         title season   air_date
+## 1            1                         Pilot      1 01-20-2008
+## 2            2           Cat&#39;s in the Bag...      1 01-27-2008
+## 3            3 ...And the Bag&#39;s in the River      1 02-10-2008
+## 4            4                    Cancer Man      1 02-17-2008
+## 5            5                   Gray Matter      1 02-24-2008
+## 6            6       Crazy Handful of Nothin      1 03-02-2008
+## 7            7    A No-Rough-Stuff-Type Deal      1 03-09-2008
+## 8            8            Seven-Thirty-Seven      2 03-08-2009
+## 9            9                       Grilled      2 03-15-2009
+## 10          10             Bit by a Dead Bee      2 03-22-2009
+## 11          11                          Down      2 03-29-2009
+## 12          12                      Breakage      2 04-05-2009
+## 13          13                      Peekaboo      2 04-12-2009
+## 14          14                  Negro y Azul      2 04-19-2009
+## 15          15              Better Call Saul      2 04-26-2009
+## 16          16                    4 Days Out      2 05-03-2009
+## 17          17                          Over      2 05-10-2009
+## 18          18                       Mandala      2 05-17-2009
+## 19          19                       Phoenix      2 05-24-2009
+## 20          20                           ABQ      2 05-31-2009
+## 21          21                       No MÃ¡s      3 03-21-2010
+## 22          22            Caballo sin Nombre      3 03-28-2010
+## 23          23                           IFT      3 04-04-2010
+## 24          24                   Green Light      3 04-11-2010
+## 25          25                          MÃ¡s      3 04-18-2010
+## 26          26                        Sunset      3 04-25-2010
+## 27          27                    One Minute      3 05-02-2010
+## 28          28                     I See You      3 05-09-2010
+## 29          29                    Kafkaesque      3 05-16-2010
+## 30          30                           Fly      3 05-23-2010
+## 31          31                       Abiquiu      3 05-30-2010
+## 32          32                 Half measures      3 06-06-2010
+## 33          33                  Full Measure      3 06-13-2010
+## 34          34                    Box Cutter      4 07-17-2011
+## 35          35             Thirty-Eight Snub      4 07-24-2011
+## 36          36                    Open House      4 07-31-2011
+## 37          37                 Bullet Points      4 08-07-2011
+## 38          38                       Shotgun      4 08-14-2011
+## 39          39                      Cornered      4 08-21-2011
+## 40          40                   Problem Dog      4 08-28-2011
+## 41          41                      Hermanos      4 09-04-2011
+## 42          42                           Bug      4 09-11-2011
+## 43          43                         Salud      4 09-18-2011
+## 44          44                   Crawl Space      4 09-25-2011
+## 45          45                     End Times      4 10-02-2011
+## 46          46                      Face Off      4 10-09-2011
+## 47          47              Live Free of Die      5 07-15-2012
+## 48          48                      Madrigal      5 07-22-2012
+## 49          49                    Hazard Pay      5 07-29-2012
+## 50          50                     Fifty-One      5 08-05-2012
+## 51          51                  Dead Freight      5 08-12-2012
+## 52          52                        Buyout      5 08-19-2012
+## 53          53                   Say My Name      5 08-26-2012
+## 54          54              Gliding Over All      5 09-02-2012
+## 55          55                   Blood Money      5 08-11-2013
+## 56          56                        Buried      5 08-18-2013
+## 57          57                   Confessions      5 08-25-2013
+## 58          58                     Rabid Dog      5 09-01-2013
+## 59          59                    To&#39;hajilee      5 09-08-2013
+## 60          60                    Ozymandias      5 09-15-2013
+## 61          61                 Granite State      5 09-22-2013
+## 62          62                        Felina      5 09-29-2013
+## 63          63                           Uno      1 02-08-2015
+## 64          64                          Mijo      1 02-09-2015
+## 65          65                         Nacho      1 02-16-2015
+## 66          66                          Hero      1 02-23-2015
+## 67          67           Alpine Shepherd Boy      1 03-02-2015
+## 68          68                        Five-O      1 03-09-2015
+## 69          69                         Bingo      1 03-16-2015
+## 70          70                          RICO      1 03-23-2015
+## 71          71                       Pimento      1 03-30-2015
+## 72          72                         Marco      1 04-06-2015
+## 73          73                        Switch      2 02-15-2016
+## 74          74                       Cobbler      2 02-22-2016
+## 75          75                      Amarillo      2 02-29-2016
+## 76          76                    Gloves Off      2 03-07-2016
+## 77          77                       Rebecca      2 03-14-2016
+## 78          78                     Bali Ha&#39;i      2 03-21-2016
+## 79          79                    Inflatable      2 03-28-2016
+## 80          80                          Fifi      2 04-04-2016
+## 81          81                        Nailed      2 04-11-2016
+## 82          82                         Klick      2 04-18-2016
+## 83          83                         Mabel      3 04-10-2017
+## 84          84                       Witness      3 04-17-2017
+## 85          85                    Sunk Costs      3 04-24-2017
+## 86          86                     Sabrosito      3 05-01-2017
+## 87          87                     Chicanery      3 05-08-2017
+## 88          88                     Off Brand      3 05-15-2017
+## 89          89                      Expenses      3 05-22-2017
+## 90          90                          Slip      3 06-05-2017
+## 91          91                          Fall      3 06-12-2017
+## 92          92                       Lantern      3 06-19-2017
+## 93          93                         Smoke      4 08-06-2018
+## 94          94                       Breathe      4 08-13-2018
+## 95          95           Something Beautiful      4 08-20-2018
+## 96          96                          Talk      4 08-27-2018
+## 97          97                  Quite a Ride      4 09-03-2018
+## 98          98                        Pinata      4 09-10-2018
+## 99          99              Something Stupid      4 09-17-2018
+## 100        100                     Coushatta      4 09-24-2018
+## 101        101                   Wiedersehen      4 10-01-2018
+## 102        102                        Winner      4 10-08-2018
+##                                                                                                                                                                                   characters
+## 1                                                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Krazy-8, Bogdan Wolynetz
+## 2                                                                                                                       Walter White, Jesse Pinkman, Skyler White, Walter White Jr., Krazy-8
+## 3                                                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Krazy-8, Gretchen Schwartz
+## 4                                                                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Ken Wins
+## 5                                                      Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Elliott Schwarts, Gretchen Swartz, Badger
+## 6                                                                                 Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Tuco Salamanca
+## 7                                                                                 Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Tuco Salamanca
+## 8                                                                                 Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Tuco Salamanca
+## 9                                                               Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Tuco Salamanca, Hector Salamanca
+## 10                                                                              Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Hector Salamanca
+## 11                                                                                                                               Walter White, Jesse Pinkman, Skyler White, Walter White Jr.
+## 12                                                                         Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Jane Margolis, Badger
+## 13                                                                                            Walter White, Jesse Pinkman, Skyler White, Marie Schrader, Walter White Jr., Gretchen Schwartz
+## 14                                                            Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Tortuga, Jane Margolis, Ted Beneke
+## 15                                                                             Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Saul Goodman, Jane Margolis, Badger
+## 16                                                                   Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Jane Margolis
+## 17                                                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Jane Margolis, Ted Beneke
+## 18                                                                 Walter White, Jesse Pinkman, Skyler White, Saul Goodman, Gustavo Fring, Jane Margolis, Ted Beneke, Donald Margolis, Combo
+## 19                                      Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Jane Margolis, Ted Beneke, Donald Margolis
+## 20                               Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Mike Ehrmantraut, Gustavo Fring, Jane Margolis, Donald Margolis
+## 21                                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, The cousins
+## 22                               Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Hector Salamanca
+## 23                                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Hector Salamanca, Ted Beneke
+## 24                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Ted Beneke
+## 25                                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Ted Beneke
+## 26                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Gale Boetticher, The cousins
+## 27                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Saul Goodman, Hector Salamanca, The cousins, Gale Boetticher
+## 28                                                               Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Mike Ehrmantraut
+## 29                                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Ted Beneke
+## 30                                                                                                                                                        Walter White, Jesse Pinkman, a fly
+## 31                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Jane Margolis
+## 32                        Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Andrea Cantillo, Victor
+## 33                                                       Walter White, Jesse Pinkman, Skyler White, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Gale Boetticher, Victor
+## 34                        Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Gale Boetticher, Victor
+## 35                                Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Andrea Cantillo
+## 36                                                                                   Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Saul Goodman, Bogdan Wolynetz
+## 37                                 Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, White White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Gale Boetticher
+## 38                                                               Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Mike Ehrmantraut
+## 39                                                                             Walter White, Jesse Pinkman, Skyler White, Walter White Jr., Gustavo Fring, Mike Ehrmantraut, Bogdan Wolynetz
+## 40                                Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Gale Boetticher
+## 41              Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Hector Salamanca, Andrea Cantillo
+## 42                                                                     Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Gustavo Fring, Mike Ehrmantraut, Ted Beneke
+## 43                                                        Walter White, Jesse Pinkman, Skyler White, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Ted Beneke, Don Eladio
+## 44  Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Mike Ehrmantraut, Hector Salamanca, Ted Beneke, Andrea Cantillo
+## 45                                                  Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman, Andrea Cantillo
+## 46                                                                   Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Gustavo Fring, Saul Goodman
+## 47                                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Walter White Jr., Saul Goodman, Mike Ehrmantraut, Ted Beneke
+## 48                                                          Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Walter White Jr., Saul Goodman, Mike Ehrmantraut, Lydia Rodarte-Quayle
+## 49                                        Walter White, Jesse Pinkman, Skyler White, Marie Schrader, Walter White Jr., Saul Goodman, Mike Ehrmantraut, Badger, Andrea Cantillo, Todd Alquist
+## 50                                                        Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Mike Ehrmantraut, Lydia Rodarte-Quayle
+## 51                                          Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Mike Ehrmantraut, Lydia Rodarte-Quayle, Todd Alquist
+## 52                                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Saul Goodman, Mike Ehrmantraut, Todd Alquist
+## 53                                                                                    Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Saul Goodman, Mike Ehrmantraut, Todd Alquist
+## 54                            Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Mike Ehrmantraut, Lydia Rodarte-Quayle, Todd Alquist
+## 55                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Lydia Rodarte-Quayle, Badger, Skinny Pete
+## 56                                                   Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Saul Goodman, Lydia Rodarte-Quayle, Todd Alquist, Jack Welker
+## 57                                                       Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Todd Alquist, Jack Welker
+## 58                                                                                  Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman
+## 59                Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Saul Goodman, Lydia Rodarte-Quayle, Todd Alquist, Andrea Cantillo, Jack Welker
+## 60                                                        Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Marie Schrader, Walter White Jr., Todd Alquist, Jack Welker, Steve Gomez
+## 61             Walter White, Jesse Pinkman, Skyler White, Marie Schrader, Saul Goodman, Lydia Rodarte-Quayle, Todd Alquist, Jack Welker, Andrea Cantillo, Eliott Schwartz, Gretchen Schwartz
+## 62     Walter White, Jesse Pinkman, Skyler White, Marie Schrader, Walter White Jr., Lydia Rodarte-Quayle, Todd Alquist, Jack Welker, Badger, Skinny Pete, Eliott Schwartz, Gretchen Schwartz
+## 63                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 64                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga, Tuco Salamanca
+## 65                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 66                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 67                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 68                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 69                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 70                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 71                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 72                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 73                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 74                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 75                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 76                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 77                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 78                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 79                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 80                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 81                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 82                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 83                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 84                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 85                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 86                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 87                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 88                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 89                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 90                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 91                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 92                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 93                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 94                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 95                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 96                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 97                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 98                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 99                                                                                                      Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 100                                                                                                     Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 101                                                                                                     Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+## 102                                                                                                     Jimmy McGill, Mike Erhmantraut, Kim Wexler, Howard Hamlin, Chuck McGill, Nacho Varga
+##     episode           series
+## 1         1     Breaking Bad
+## 2         2     Breaking Bad
+## 3         3     Breaking Bad
+## 4         4     Breaking Bad
+## 5         5     Breaking Bad
+## 6         6     Breaking Bad
+## 7         7     Breaking Bad
+## 8         1     Breaking Bad
+## 9         2     Breaking Bad
+## 10        3     Breaking Bad
+## 11        4     Breaking Bad
+## 12        5     Breaking Bad
+## 13        6     Breaking Bad
+## 14        7     Breaking Bad
+## 15        8     Breaking Bad
+## 16        9     Breaking Bad
+## 17       10     Breaking Bad
+## 18       11     Breaking Bad
+## 19       12     Breaking Bad
+## 20       13     Breaking Bad
+## 21        1     Breaking Bad
+## 22        2     Breaking Bad
+## 23        3     Breaking Bad
+## 24        4     Breaking Bad
+## 25        5     Breaking Bad
+## 26        6     Breaking Bad
+## 27        7     Breaking Bad
+## 28        8     Breaking Bad
+## 29        9     Breaking Bad
+## 30       10     Breaking Bad
+## 31       11     Breaking Bad
+## 32       12     Breaking Bad
+## 33       13     Breaking Bad
+## 34        1     Breaking Bad
+## 35        2     Breaking Bad
+## 36        3     Breaking Bad
+## 37        4     Breaking Bad
+## 38        5     Breaking Bad
+## 39        6     Breaking Bad
+## 40        7     Breaking Bad
+## 41        8     Breaking Bad
+## 42        9     Breaking Bad
+## 43       10     Breaking Bad
+## 44       11     Breaking Bad
+## 45       12     Breaking Bad
+## 46       13     Breaking Bad
+## 47        1     Breaking Bad
+## 48        2     Breaking Bad
+## 49        3     Breaking Bad
+## 50        4     Breaking Bad
+## 51        5     Breaking Bad
+## 52        6     Breaking Bad
+## 53        7     Breaking Bad
+## 54        8     Breaking Bad
+## 55        9     Breaking Bad
+## 56       10     Breaking Bad
+## 57       11     Breaking Bad
+## 58       12     Breaking Bad
+## 59       13     Breaking Bad
+## 60       14     Breaking Bad
+## 61       15     Breaking Bad
+## 62       16     Breaking Bad
+## 63        1 Better Call Saul
+## 64        2 Better Call Saul
+## 65        3 Better Call Saul
+## 66        4 Better Call Saul
+## 67        5 Better Call Saul
+## 68        6 Better Call Saul
+## 69        7 Better Call Saul
+## 70        8 Better Call Saul
+## 71        9 Better Call Saul
+## 72       10 Better Call Saul
+## 73        1 Better Call Saul
+## 74        2 Better Call Saul
+## 75        3 Better Call Saul
+## 76        4 Better Call Saul
+## 77        5 Better Call Saul
+## 78        6 Better Call Saul
+## 79        7 Better Call Saul
+## 80        8 Better Call Saul
+## 81        9 Better Call Saul
+## 82       10 Better Call Saul
+## 83        1 Better Call Saul
+## 84        2 Better Call Saul
+## 85        3 Better Call Saul
+## 86        4 Better Call Saul
+## 87        5 Better Call Saul
+## 88        6 Better Call Saul
+## 89        7 Better Call Saul
+## 90        8 Better Call Saul
+## 91        9 Better Call Saul
+## 92       10 Better Call Saul
+## 93        1 Better Call Saul
+## 94        2 Better Call Saul
+## 95        3 Better Call Saul
+## 96        4 Better Call Saul
+## 97        5 Better Call Saul
+## 98        6 Better Call Saul
+## 99        7 Better Call Saul
+## 100       8 Better Call Saul
+## 101       9 Better Call Saul
+## 102      10 Better Call Saul</code></pre>
+</div>
+<div id="challenge-2-1" class="section level2">
+<h2><span class="header-section-number">2.3</span> Challenge 2</h2>
+<p>Scrape one of the competitor websites of canyon (either <a href="https://www.rosebikes.de/" class="uri">https://www.rosebikes.de/</a> or <a href="https://www.radon-bikes.de" class="uri">https://www.radon-bikes.de</a>) and create a small database. The database should contain the model names and prices for at least one category. Use the selectorgadget to get a good understanding of the website structure.</p>
+</div>
+<div id="challenge-code-2" class="section level2">
+<h2><span class="header-section-number">2.4</span> Challenge Code</h2>
+<pre class="r"><code># WEBSCRAPING ----
+
+
+# 1.0 LIBRARIES ----
+
+library(tidyverse) # Main Package - Loads dplyr, purrr, etc.
+library(rvest)     # HTML Hacking &amp; Web Scraping
+library(xopen)     # Quickly opening URLs
+library(jsonlite)  # converts JSON files to R objects
+library(glue)      # concatenate strings
+library(stringi)   # character string/text processing
+
+# 1.1 COLLECT PRODUCT TYPES ----
+url_home          &lt;- &quot;https://www.radon-bikes.de/&quot;
+##xopen(url_home)
+html_home         &lt;- read_html(url_home)
+bike_family_tbl &lt;- html_home %&gt;%
+html_nodes(css = &quot;.megamenu__item &gt; a&quot;) %&gt;%  
+html_attr(&#39;href&#39;) %&gt;%  
+
+enframe(name = &quot;position&quot;, value = &quot;cat_subcat_url&quot;) %&gt;%  
+  
+mutate(family_id = str_glue(&quot;https://www.radon-bikes.de{cat_subcat_url}bikegrid&quot;))
+bike_family_tbl</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    position cat_subcat_url           family_id                                  
+##       &lt;int&gt; &lt;chr&gt;                    &lt;glue&gt;                                     
+##  1        1 /mountainbike/hardtail/  https://www.radon-bikes.de/mountainbike/ha~
+##  2        2 /mountainbike/fullsuspe~ https://www.radon-bikes.de/mountainbike/fu~
+##  3        3 /trekking-cross/trekkin~ https://www.radon-bikes.de/trekking-cross/~
+##  4        4 /trekking-cross/cross/   https://www.radon-bikes.de/trekking-cross/~
+##  5        5 /e-bike/mountainbike/    https://www.radon-bikes.de/e-bike/mountain~
+##  6        6 /e-bike/trekking/        https://www.radon-bikes.de/e-bike/trekking~
+##  7        7 /roadbike/carbon/        https://www.radon-bikes.de/roadbike/carbon~
+##  8        8 /roadbike/alu/           https://www.radon-bikes.de/roadbike/alu/bi~
+##  9        9 /wear/radon-wear/        https://www.radon-bikes.de/wear/radon-wear~
+## 10       10 /wear/accessoires/       https://www.radon-bikes.de/wear/accessoire~</code></pre>
+<pre class="r"><code># 2.0 COLLECT BIKE DATA ----
+
+bike_category_url &lt;- bike_family_tbl$family_id[1]
+#xopen(bike_category_url)
+html_bike_category  &lt;- read_html(bike_category_url)
+
+bike_name_tbl        &lt;- html_bike_category %&gt;%
+html_nodes(css = &quot;.m-bikegrid__info .a-heading--small&quot;) %&gt;%
+html_text() %&gt;%
+
+
+enframe(name = &quot;position&quot;, value = &quot;name&quot;)
+bike_name_tbl </code></pre>
+<pre><code>## # A tibble: 33 x 2
+##    position name                                                                
+##       &lt;int&gt; &lt;chr&gt;                                                               
+##  1        1 &quot;\n                                    JEALOUS 8.0\n               ~
+##  2        2 &quot;\n                                    JEALOUS 9.0\n               ~
+##  3        3 &quot;\n                                    JEALOUS 10.0\n              ~
+##  4        4 &quot;\n                                    JEALOUS 10.0 EA\n           ~
+##  5        5 &quot;\n                                    JEALOUS 10.0\n              ~
+##  6        6 &quot;\n                                    JEALOUS 10.0 EA\n           ~
+##  7        7 &quot;\n                                    NEW JEALOUS SUPERLITE 1X\n  ~
+##  8        8 &quot;\n                                    JEALOUS AL 8.0\n            ~
+##  9        9 &quot;\n                                    JEALOUS AL 8.0 HD\n         ~
+## 10       10 &quot;\n                                    JEALOUS AL 9.0\n            ~
+## # ... with 23 more rows</code></pre>
+<pre class="r"><code>bike_price_tbl &lt;- html_bike_category %&gt;%
+html_nodes(css = &quot;.m-bikegrid__price.currency_eur .m-bikegrid__price--active&quot;) %&gt;%  
+html_text() %&gt;% 
+enframe(name = &quot;position&quot;, value = &quot;price&quot;)
+bike_price_tbl</code></pre>
+<pre><code>## # A tibble: 33 x 2
+##    position price 
+##       &lt;int&gt; &lt;chr&gt; 
+##  1        1 2599 €
+##  2        2 2999 €
+##  3        3 3999 €
+##  4        4 5299 €
+##  5        5 3699 €
+##  6        6 3799€ 
+##  7        7 999 € 
+##  8        8 999 € 
+##  9        9 1299 €
+## 10       10 1499 €
+## # ... with 23 more rows</code></pre>
+<pre class="r"><code>model_price_tbl &lt;- left_join(bike_name_tbl, bike_price_tbl)%&gt;% 
+select(name, price)
+model_price_tbl</code></pre>
+<pre><code>## # A tibble: 33 x 2
+##    name                                                                    price
+##    &lt;chr&gt;                                                                   &lt;chr&gt;
+##  1 &quot;\n                                    JEALOUS 8.0\n                  ~ 2599~
+##  2 &quot;\n                                    JEALOUS 9.0\n                  ~ 2999~
+##  3 &quot;\n                                    JEALOUS 10.0\n                 ~ 3999~
+##  4 &quot;\n                                    JEALOUS 10.0 EA\n              ~ 5299~
+##  5 &quot;\n                                    JEALOUS 10.0\n                 ~ 3699~
+##  6 &quot;\n                                    JEALOUS 10.0 EA\n              ~ 3799€
+##  7 &quot;\n                                    NEW JEALOUS SUPERLITE 1X\n     ~ 999 €
+##  8 &quot;\n                                    JEALOUS AL 8.0\n               ~ 999 €
+##  9 &quot;\n                                    JEALOUS AL 8.0 HD\n            ~ 1299~
+## 10 &quot;\n                                    JEALOUS AL 9.0\n               ~ 1499~
+## # ... with 23 more rows</code></pre>
+</div>
+</div>
+<div id="data-wrangling" class="section level1">
+<h1><span class="header-section-number">3</span> Data Wrangling</h1>
+<p>Data Wrangling</p>
+<div id="challenge" class="section level2">
+<h2><span class="header-section-number">3.1</span> Challenge</h2>
+<p>Answer the following questions with that data:</p>
+<p>1- Patent Dominance: What US company / corporation has the most patents? List the 10 US companies with the most assigned/granted patents.<br />
+2- Recent patent acitivity: What US company had the most patents granted in 2019? List the top 10 companies with the most new granted patents for 2019.<br />
+3- Innovation in Tech: What is the most innovative tech sector? For the top 10 companies (worldwide) with the most patents, what are the top 5 USPTO tech main classes?</p>
+</div>
+<div id="challenge-code-3" class="section level2">
+<h2><span class="header-section-number">3.2</span> Challenge Code</h2>
+<p>library(tidyverse) library(vroom) library(magrittr) library(lubridate) library(data.table)</p>
+<p>patent &lt;- “C:/Users/Khale/Desktop/Business Module/DS_101/02_data_wrangling/patent.tsv” patent_tbl &lt;- fread(patent) setnames(patent_tbl, “id”, “patent_id”) patent_tbl_view &lt;- patent_tbl[1:2]</p>
+<p>assignee &lt;- “C:/Users/Khale/Desktop/Business Module/DS_101/02_data_wrangling/assignee.tsv” assignee_tbl &lt;- fread(assignee) setnames(assignee_tbl, “id”, “assignee_id”)</p>
+<p>patent_assignee &lt;- “C:/Users/Khale/Desktop/Business Module/DS_101/02_data_wrangling/patent_assignee.tsv” patent_assignee_tbl&lt;- fread(patent_assignee)</p>
+<p>uspc &lt;- “C:/Users/Khale/Desktop/Business Module/DS_101/02_data_wrangling/uspc.tsv” uspc_tbl&lt;- fread(uspc) setnames(uspc_tbl, “uuid”, “assignee_id”)</p>
+<p>combined_data_assignee &lt;- merge(assignee_tbl, patent_assignee_tbl, by=‘assignee_id’) na.omit(combined_data_assignee, cols=“organization”)</p>
+<p>combined_data_assignee [, .N, by = organization][order(-N)] %&gt;% head(1)%&gt;%na.omit()</p>
+<p>combined_data_assignee [, .N, by = organization][order(-N)]%&gt;%na.omit() %&gt;% head(11)</p>
+<p>combined_data_patent &lt;- merge(combined_data_assignee,patent_tbl , by=‘patent_id’) reshaped_patent_tbl &lt;- combined_data_patent[,.(patent_id, country, date, organization,kind)]</p>
+<p>reshaped_patent_tbl [lubridate::year(date) == 2019, .N, by = organization][order(-N)]%&gt;%na.omit() %&gt;% head(1)</p>
+<p>reshaped_patent_tbl [lubridate::year(date) == 2019 &amp; kind==“B1”, .N, by = organization][order(-N)]%&gt;%na.omit() %&gt;% head(10)</p>
+<p>combined_data_uspc &lt;- merge(combined_data_assignee,uspc_tbl , by=‘patent_id’) reshaped_uspc_tbl &lt;- combined_data_uspc[,.(patent_id, type, organization,mainclass_id,subclass_id)]</p>
+<p>patent_tbl[, .N, by = type][order(-N)] %&gt;% head(1)</p>
+<p>reshaped_uspc_tbl[organization==“International Business Machines Corporation”, .N, by = mainclass_id][order(-N)]%&gt;% head(5)</p>
+</div>
+<div id="challenge-1-2" class="section level2">
+<h2><span class="header-section-number">3.3</span> Challenge 1</h2>
+<p>1st output</p>
+<pre><code>                                    organization      N                              
+  1: International Business Machines Corporation 139091
+  </code></pre>
+<p>2nd Output</p>
+<pre><code>                                   organization      N    
+ 1: International Business Machines Corporation 139091  
+ 2:               Samsung Electronics Co., Ltd.  93561  
+ 3:                      Canon Kabushiki Kaisha  75909  
+ 4:                                              73070  
+ 5:                            Sony Corporation  54342  
+ 6:                    Kabushiki Kaisha Toshiba  49442  
+ 7:                    General Electric Company  47121  
+ 8:                               Hitachi, Ltd.  45374  
+ 9:                           Intel Corporation  42156  
+10:                             Fujitsu Limited  37196</code></pre>
+</div>
+<div id="challenge-2-2" class="section level2">
+<h2><span class="header-section-number">3.4</span> Challenge 2</h2>
+<p>1st output</p>
+<pre><code>                                    organization    N  
+  1: International Business Machines Corporation 9265
+  </code></pre>
+<p>2nd output</p>
+<pre><code>                                          organization    N
+     1:                      Amazon Technologies, Inc. 1766  
+     2:                     EMC IP Holding Company LLC  719  
+     3:                                    Google Inc.  550  
+     4:    International Business Machines Corporation  515  
+     5:                      Capital One Services, LLC  386  
+     6:                                     Apple Inc.  299  
+     7:                                                 276  
+     8: STATE FARM MUTUAL AUTOMOBILE INSURANCE COMPANY  242  
+     9:                                 Facebook, Inc.  239  
+    10:            Pioneer Hi-Bred International, Inc.  233      </code></pre>
+</div>
+<div id="challenge-3" class="section level2">
+<h2><span class="header-section-number">3.5</span> Challenge 3</h2>
+<p>1st output</p>
+<pre><code>                  type       N    
+            1: utility 6735315
+  </code></pre>
+<p>2nd output</p>
+<pre><code>       mainclass_id     N  
+    1:          257 21754  
+    2:          709 16834  
+    3:          438 16596  
+    4:          707 16147  
+    5:          711 12829</code></pre>
+</div>
+</div>
+<div id="data-visualization" class="section level1">
+<h1><span class="header-section-number">4</span> Data Visualization</h1>
+<p>Data Visualization</p>
+<div id="challenge-1-3" class="section level2">
+<h2><span class="header-section-number">4.1</span> Challenge 1</h2>
+<p>Goal: Map the time course of the cumulative Covid-19 cases! Adding the cases for Europe is optional. You can choose your own color theme, but don’t use the default one. Don’t forget to scale the axis properly. The labels can be added with geom_label() or with geom_label_repel() (from the package ggrepel).</p>
+</div>
+<div id="challenge-code-4" class="section level2">
+<h2><span class="header-section-number">4.2</span> Challenge Code</h2>
+<pre class="r"><code>library(tidyverse)
+library(ggthemes)
+covid_data_tbl &lt;- read_csv(&quot;https://opendata.ecdc.europa.eu/covid19/casedistribution/csv&quot;)
+
+covid_data_tbl &lt;- covid_data_tbl %&gt;%
+  rename(cumulative_cases = `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000`, continent=continentExp, country=countriesAndTerritories)
+
+
+covid_data_tbl_reshaped &lt;- covid_data_tbl %&gt;%
+  
+  select(month,country ,continent, cases, deaths, year) %&gt;%
+  filter((country == &quot;United_States_of_America&quot; | 
+            country == &quot;Germany&quot; | 
+            country == &quot;United_Kingdom&quot; | 
+            country == &quot;France&quot; | 
+            country == &quot;Spain&quot;) &amp; year == &quot;2020&quot;)%&gt;%
+  # Group by category and summarize
+  group_by(country, month, year) %&gt;%
+  summarise(total_case = sum(cases)) %&gt;%
+  ungroup()%&gt;%
+  mutate(month=lubridate::month(month,label = TRUE,abbr = TRUE))
+
+
+cumulative_case_tbl &lt;- covid_data_tbl_reshaped %&gt;% mutate(Cumulative_Cases=cumsum(total_case))
+
+
+cumulative_case_tbl %&gt;%
+  
+  ggplot(aes(month, Cumulative_Cases, group=country, color = country)) +
+  
+  geom_line(size=.5) +
+  scale_y_continuous(labels = scales::dollar_format(scale  = 1/1e6, 
+                                                    prefix = &quot;&quot;, 
+                                                    suffix = &quot;M â‚¬&quot;))+
+  
+  
+  theme_minimal() +
+  theme(legend.position  = &quot;right&quot;, 
+        legend.direction = &quot;vertical&quot;,
+        axis.text.x = element_text(angle = 45))</code></pre>
+<p><img src="journal_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="challenge-2-3" class="section level2">
+<h2><span class="header-section-number">4.3</span> Challenge 2</h2>
+<p>Goal: Visualize the distribution of the mortality rate (deaths / population) with geom_map().</p>
+</div>
+<div id="challenge-code-5" class="section level2">
+<h2><span class="header-section-number">4.4</span> Challenge Code</h2>
+<pre class="r"><code>rm(list=ls(all=TRUE))
+
+
+library(tidyverse)
+library(ggthemes)
+library(ggplot2)
+library(scales)
+library(forcats)
+library(ggrepel)
+library(maps)
+
+
+
+covid_data_tbl &lt;- read_csv(&quot;https://opendata.ecdc.europa.eu/covid19/casedistribution/csv&quot;)
+world &lt;- map_data(&quot;world&quot;)
+
+covid_data_tbl &lt;- covid_data_tbl%&gt;% 
+  mutate(across(countriesAndTerritories, str_replace_all, &quot;_&quot;, &quot; &quot;)) %&gt;%
+  mutate(countriesAndTerritories = case_when(
+    
+    countriesAndTerritories == &quot;United Kingdom&quot; ~ &quot;UK&quot;,
+    countriesAndTerritories == &quot;United States of America&quot; ~ &quot;USA&quot;,
+    countriesAndTerritories == &quot;Czechia&quot; ~ &quot;Czech Republic&quot;,
+    countriesAndTerritories == &quot;Bonaire, Saint Eustatius and Saba&quot; ~ &quot;Bonaire&quot;,
+    TRUE ~ countriesAndTerritories
+  ))
+
+
+covid_data_tbl &lt;- covid_data_tbl %&gt;%
+  rename(region=countriesAndTerritories)
+
+covid_data_tbl &lt;- covid_data_tbl %&gt;%
+  group_by(region)%&gt;%
+  summarise(total_deaths = sum(deaths), population = mean(popData2019)) %&gt;%
+  mutate(mortality_rate = (total_deaths / population)*100) %&gt;%
+  ungroup()
+
+
+world_covid_data_tbl &lt;- dplyr::left_join(world, covid_data_tbl, by=c(&quot;region&quot;))
+
+world_covid_data_tbl %&gt;%
+  ggplot(aes(map_id = region)) +
+  geom_map(aes(fill = mortality_rate), map = world, color = &quot;white&quot;) +
+  expand_limits(x = world_covid_data_tbl$long, y = world_covid_data_tbl$lat) +
+  scale_fill_gradient(high = &quot;#541e2b&quot;, low = &quot;#ff8282&quot;, na.value = &quot;grey50&quot;,  guide = &quot;colorbar&quot;)</code></pre>
+<p><img src="journal_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
